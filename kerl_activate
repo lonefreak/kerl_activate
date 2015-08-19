@@ -1,0 +1,32 @@
+#! /bin/sh
+
+set -e
+
+if [ ! -f ~/.kerlrc ]
+then
+	printf "Could not find ~/.kerlrc"
+	exit 1
+fi
+source ~/.kerlrc
+
+if [ "$KERL_DEFAULT_INSTALL_DIR" == "" ]
+then
+	printf "KERL_DEFAULT_INSTALL_DIR is empty"
+	exit 1
+fi
+
+activate_installation () {
+	local INSTALL_NAME=$1
+	source $KERL_DEFAULT_INSTALL_DIR/$INSTALL_NAME/activate
+	kerl active
+}
+
+if [ "$1" == "" ] 
+then
+	printf "USAGE:\n"
+	printf "\t$0 INSTALLATION_NAME\n\n"
+	printf "What installation do you want to activate?\n"
+	kerl list installations | cut -d' ' -f1
+else
+	activate_installation $1
+fi
