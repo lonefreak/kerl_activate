@@ -24,7 +24,7 @@ activate_installation () {
 if [ "$1" == "" ] 
 then
 	printf "USAGE:\n"
-	printf "\t$0 INSTALLATION_NAME\n\n"
+	printf "\t`basename "$0"` INSTALLATION_NAME\n\n"
 	printf "What installation do you want to activate?\n"
 	kerl list installations | cut -d' ' -f1
 else
