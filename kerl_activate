@@ -4,14 +4,14 @@ set -e
 
 if [ ! -f ~/.kerlrc ]
 then
-	printf "Could not find ~/.kerlrc"
+	printf "Could not find ~/.kerlrc\n"
 	exit 1
 fi
 source ~/.kerlrc
 
 if [ "$KERL_DEFAULT_INSTALL_DIR" == "" ]
 then
-	printf "KERL_DEFAULT_INSTALL_DIR is empty"
+	printf "KERL_DEFAULT_INSTALL_DIR is empty\n"
 	exit 1
 fi
 
